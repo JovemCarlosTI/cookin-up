@@ -2,7 +2,7 @@
 export default {
     data() {
         return {
-            ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Sal', 'Pimenta', 'Azeite', 'Cebola', 'Manjericão', 'Tomate', 'Pimentão', 'Cenoura', 'Salsinha', 'Cebolinha', 'Coentro', 'Limão', 'Vinagre', 'Mostarda', 'Mel', 'Açúcar', 'Farinha', 'Leite', 'Ovo', 'Queijo', 'Presunto', 'Peito de frango', 'Carne moída', 'Peixe', 'Camarão', 'Lentilha', 'Feijão', 'Grão-de-bico', 'Arroz', 'Macarrão', 'Batata', 'Mandioca', 'Abóbora', 'Berinjela', 'Abobrinha', 'Couve', 'Espinafre', 'Alface', 'Rúcula', 'Agrião', 'Repolho', 'Brócolis', 'Couve-flor', 'Cenoura', 'Beterraba', 'Chuchu', 'Pepino', 'Tomate', 'Pimentão', 'Cebola', 'Alho', 'Gengibre', 'Pimenta', 'Açafrão', 'Canela', 'Cravo', 'Noz-moscada', 'Coentro'].sort()
+            ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Azeite', 'Cebola', 'Manjericão', 'Cenoura', 'Salsinha', 'Cebolinha', 'Limão', 'Vinagre', 'Mostarda', 'Mel', 'Açúcar', 'Farinha', 'Leite', 'Ovo', 'Queijo', 'Presunto', 'Peito de frango', 'Carne moída', 'Peixe', 'Camarão', 'Lentilha', 'Feijão', 'Grão-de-bico', 'Arroz', 'Macarrão', 'Batata', 'Mandioca', 'Abóbora', 'Berinjela', 'Abobrinha', 'Couve', 'Espinafre', 'Alface', 'Rúcula', 'Agrião', 'Repolho', 'Brócolis', 'Couve-flor', 'Beterraba', 'Chuchu', 'Pepino', 'Tomate', 'Pimentão', 'Cebola', 'Gengibre', 'Pimenta', 'Açafrão', 'Canela', 'Cravo', 'Noz-moscada', 'Coentro'].sort()
         }
     }
 }
@@ -14,9 +14,14 @@ export default {
             <span class="subtitulo-lg sua-lista-texto">Sua Lista:</span>
         </section>
 
-        <ul class="ingredientes-sua-lista">
+        <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
             <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">{{ ingrediente }}</li>
         </ul>
+
+        <p v-else class="paragrafo lista-vazia">
+            <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de pesquisa">
+            Sua lista está vazia, selecione ingredientes para começar a buscar receitas!
+        </p>
     </main>
 </template>
 
