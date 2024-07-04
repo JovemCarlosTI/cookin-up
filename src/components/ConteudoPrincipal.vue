@@ -15,7 +15,7 @@ export default {
         </section>
 
         <ul class="ingredientes-sua-lista">
-            <li v-for="ingrediente in ingredientes" class="ingrediente">{{ ingrediente }}</li>
+            <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">{{ ingrediente }}</li>
         </ul>
     </main>
 </template>
