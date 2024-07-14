@@ -1,34 +1,38 @@
 <script lang="ts">
-import SelecionarIngredientes from './SelecionarIngredientes.vue' 
+import SelecionarIngredientes from './SelecionarIngredientes.vue'
+import Tag from './Tag.vue'
 
 export default {
-    data() {
-        return {
-            ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Azeite', 'Cebola', 'Manjericão', 'Cenoura', 'Salsinha', 'Cebolinha', 'Limão', 'Vinagre', 'Mostarda', 'Mel', 'Açúcar', 'Farinha', 'Leite', 'Ovo', 'Queijo', 'Presunto', 'Peito de frango', 'Carne moída', 'Peixe', 'Camarão', 'Lentilha', 'Feijão', 'Grão-de-bico', 'Arroz', 'Macarrão', 'Batata', 'Mandioca', 'Abóbora', 'Berinjela', 'Abobrinha', 'Couve', 'Espinafre', 'Alface', 'Rúcula', 'Agrião', 'Repolho', 'Brócolis', 'Couve-flor', 'Beterraba', 'Chuchu', 'Pepino', 'Tomate', 'Pimentão', 'Cebola', 'Gengibre', 'Pimenta', 'Açafrão', 'Canela', 'Cravo', 'Noz-moscada', 'Coentro'].sort()
-        }
-    }, components: {
-        SelecionarIngredientes
+  data() {
+    return {
+      ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Azeite', 'Cebola', 'Manjericão', 'Cenoura', 'Salsinha', 'Cebolinha', 'Limão', 'Vinagre', 'Mostarda', 'Mel', 'Açúcar', 'Farinha', 'Leite', 'Ovo', 'Queijo', 'Presunto', 'Peito de frango', 'Carne moída', 'Peixe', 'Camarão', 'Lentilha', 'Feijão', 'Grão-de-bico', 'Arroz', 'Macarrão', 'Batata', 'Mandioca', 'Abóbora', 'Berinjela', 'Abobrinha', 'Couve', 'Espinafre', 'Alface', 'Rúcula', 'Agrião', 'Repolho', 'Brócolis', 'Couve-flor', 'Beterraba', 'Chuchu', 'Pepino', 'Tomate', 'Pimentão', 'Cebola', 'Gengibre', 'Pimenta', 'Açafrão', 'Canela', 'Cravo', 'Noz-moscada', 'Coentro'].sort()
     }
+  }, components: {
+    SelecionarIngredientes,
+    Tag
+  }
 }
 </script>
 
 <template>
-    <main class="conteudo-principal">
-        <section>
-            <span class="subtitulo-lg sua-lista-texto">Sua Lista:</span>
-            
-            <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-              <li v-for="ingrediente in ingredientes" :key="ingrediente" class="ingrediente">{{ ingrediente }}</li>
-            </ul>
-            
-            <p v-else class="paragrafo lista-vazia">
-              <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de pesquisa">
-              Sua lista está vazia, selecione ingredientes para começar a buscar receitas!
-            </p>
-        </section>
+  <main class="conteudo-principal">
+    <section>
+      <span class="subtitulo-lg sua-lista-texto">Sua Lista:</span>
 
-        <SelecionarIngredientes />
-    </main>
+      <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
+        <li v-for="ingrediente in ingredientes" :key="ingrediente">
+          <Tag :texto="ingrediente" />
+        </li>
+      </ul>
+
+      <p v-else class="paragrafo lista-vazia">
+        <img src="../assets/images/icones/lista-vazia.svg" alt="Ícone de pesquisa">
+        Sua lista está vazia, selecione ingredientes para começar a buscar receitas!
+      </p>
+    </section>
+
+    <SelecionarIngredientes />
+  </main>
 </template>
 
 <style scoped>
@@ -56,18 +60,6 @@ export default {
   justify-content: center;
   gap: 1rem 1.5rem;
   flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
 }
 
 .lista-vazia {
