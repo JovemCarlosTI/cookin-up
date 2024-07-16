@@ -5,11 +5,19 @@ import SuaLista from './SuaLista.vue'
 export default {
   data() {
     return {
-      ingredientes: ['Alho', 'Manteiga', 'Orégano', 'Azeite', 'Cebola', 'Manjericão', 'Cenoura', 'Salsinha', 'Cebolinha', 'Limão', 'Vinagre', 'Mostarda', 'Mel', 'Açúcar', 'Farinha', 'Leite', 'Ovo', 'Queijo', 'Presunto', 'Peito de frango', 'Carne moída', 'Peixe', 'Camarão', 'Lentilha', 'Feijão', 'Grão-de-bico', 'Arroz', 'Macarrão', 'Batata', 'Mandioca', 'Abóbora', 'Berinjela', 'Abobrinha', 'Couve', 'Espinafre', 'Alface', 'Rúcula', 'Agrião', 'Repolho', 'Brócolis', 'Couve-flor', 'Beterraba', 'Chuchu', 'Pepino', 'Tomate', 'Pimentão', 'Cebola', 'Gengibre', 'Pimenta', 'Açafrão', 'Canela', 'Cravo', 'Noz-moscada', 'Coentro'].sort()
+      ingredientes: [] as String[]
     }
   }, components: {
     SelecionarIngredientes,
     SuaLista
+  },
+  methods: {
+    adicionarIngrediente(ingrediente: String) {
+      this.ingredientes.push(ingrediente)
+    },
+    removerIngrediente(ingrediente: String) {
+      this.ingredientes = this.ingredientes.filter(i => i !== ingrediente)
+    }
   }
 }
 </script>
@@ -20,7 +28,7 @@ export default {
       <SuaLista :ingredientes="ingredientes" />
     </section>
 
-    <SelecionarIngredientes />
+    <SelecionarIngredientes @adicionar-ingrediente="adicionarIngrediente" @remover-ingrediente="removerIngrediente" />
   </main>
 </template>
 
